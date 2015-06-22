@@ -53,12 +53,4 @@ class PersonController {
         log.info("getPersonByFirstName with parameter $firstName")
         repository.findByFirstName(firstName)
     }
-
-    @RequestMapping(value = "/headers", method = RequestMethod.GET)
-    def getPersonHeaders() {
-        log.info("getPersonHeaders")
-        repository.findAll().collect {Person Person ->
-            [id: Person.id, firstName: Person.firstName, lastName: Person.lastName]
-        }
-    }
 }

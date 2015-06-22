@@ -41,7 +41,7 @@ class Application {
         println ""
 
         println "### findByFirstName(Arthur) ###"
-        repository.findByFirstName("Arthur").each { println it }
+        println repository.findByFirstName("Arthur")
         println ""
 
         println "### findByAddressPlanet(Earth) ###"
