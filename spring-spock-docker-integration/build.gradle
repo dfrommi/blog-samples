@@ -1,0 +1,82 @@
+group 'mr.f'
+version '1.0'
+
+def DOCKER = '/usr/local/bin/docker'
+def DOCKER_GROUP = 'docker'
+
+def DB_ENV = [:]
+DB_ENV['AppDB'] = [port: 27017, container: 'appDB']
+DB_ENV['IntegrationDB'] = [port: 29017, container: 'integrationDB']
+
+buildscript {
+    repositories { mavenCentral() }
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.4.RELEASE'
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'spring-boot'
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    integrationTest {
+        groovy {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/integration-test/groovy')
+        }
+        resources.srcDir file('src/integration-test/resources')
+    }
+}
+
+configurations {
+    integrationTestCompile.extendsFrom testCompile
+    integrationTestRuntime.extendsFrom testRuntime
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-security'
+    compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
+
+    testCompile 'org.spockframework:spock-core:1.0-groovy-2.3'
+    integrationTestCompile 'org.spockframework:spock-spring:1.0-groovy-2.3'
+    integrationTestCompile 'org.springframework:spring-test'
+}
+
+tasks.withType(Test) {
+    reports.html.destination = file("${reporting.baseDir}/${name}")
+}
+
+task integrationTest(type: Test) {
+    testClassesDir = sourceSets.integrationTest.output.classesDir
+    classpath = sourceSets.integrationTest.runtimeClasspath
+    include '**/*Spec.*'
+    systemProperty 'spring.profiles.active', 'integration'
+    outputs.upToDateWhen { false }
+}
+
+// Create one start and one stop Task per DB environment
+DB_ENV.each { envName, envProps ->
+    tasks.create(name: "start$envName", type: Exec, group: DOCKER_GROUP) {
+        commandLine DOCKER, 'run', '-p', "${envProps.port}:27017", '--name', "${envProps.container}", '-d', 'mongo'
+    }
+
+    tasks.create(name: "stop$envName" , group: DOCKER_GROUP) << {
+        exec { commandLine DOCKER, 'stop', "${envProps.container}" }
+        exec { commandLine DOCKER, 'rm', "${envProps.container}" }
+    }
+}
+
+// Integration test automatically starts and stop docker container with DB
+integrationTest.dependsOn startIntegrationDB
+integrationTest.finalizedBy stopIntegrationDB
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
+}
