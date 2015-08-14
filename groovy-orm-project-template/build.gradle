@@ -1,0 +1,52 @@
+apply plugin: 'groovy'
+apply plugin: 'application'
+
+mainClassName = 'df.ormtemplate.Main'
+
+ext {
+  v = [
+    groovy: '2.1.6',
+    spring: '3.1.4.RELEASE',
+	hibernate: '4.2.4.Final',
+    junit: '4.11',
+    slf4j: '1.7.5',
+    logback: '1.0.13']
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+
+    compile (
+        "org.codehaus.groovy:groovy-all:$v.groovy",
+        "org.springframework:spring-context:$v.spring",
+        "org.springframework:spring-core:$v.spring",
+        "org.springframework:spring-orm:$v.spring",
+        "org.springframework:spring-tx:$v.spring",
+		"org.hibernate:hibernate-core:$v.hibernate",
+		"org.hsqldb:hsqldb:2.3.0"
+    )
+
+    runtime (
+        "commons-cli:commons-cli:1.2",
+        "cglib:cglib:2.2.2"
+    )
+
+    // Logging
+    compile "ch.qos.logback:logback-classic:$v.logback"
+    runtime (
+        "org.slf4j:slf4j-api:$v.slf4j",
+        "org.slf4j:jcl-over-slf4j:$v.slf4j"
+    )
+
+    testCompile (
+        "junit:junit:$v.junit"
+    )
+}
+
+configurations {
+    all*.exclude group: "commons-logging", module: "commons-logging"
+}
+
