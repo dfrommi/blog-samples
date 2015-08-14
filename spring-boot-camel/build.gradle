@@ -1,0 +1,45 @@
+buildscript {
+	ext {
+		springBootVersion = '1.0.0.RC1'
+	}
+    repositories {
+    	mavenLocal()
+        maven { url "http://repo.spring.io/libs-release" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+targetCompatibility = 1.6
+sourceCompatibility = 1.6
+
+mainClassName = "mr.f.spring_boot_camel.Application"
+
+jar {
+    baseName = 'spring-boot-camel'
+    version =  '0.0.1-SNAPSHOT'
+}
+
+repositories {
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-release" }
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
+
+	compile('org.apache.camel:camel-servlet:2.12.2')
+	compile('org.apache.camel:camel-spring-javaconfig:2.12.2')
+	
+    testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.8'
+}
