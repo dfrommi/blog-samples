@@ -1,0 +1,14 @@
+Description.metaClass.leftShift = { text ->
+    delegate.appendText(text.toString())
+}
+
+Description.metaClass.or = { value ->
+    delegate.appendValue(value)
+}
+
+def hasNumber(int i) {
+    [ matchesSafely: { i == it.number },
+      describeTo: { it << "a Demo object with number " | i },
+      describeMismatchSafely: {item, descr -> descr << "was " | item.number }
+    ] as TypeSafeMatcher<Demo>
+}

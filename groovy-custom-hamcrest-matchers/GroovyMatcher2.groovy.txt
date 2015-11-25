@@ -1,0 +1,6 @@
+def hasNumber(int i) {
+    [ matchesSafely: { i == it.number },
+      describeTo: { it.appendText("a Demo object with number ").appendValue(i) },
+      describeMismatchSafely: { item, descr -> descr.appendText("was ").appendValue(item.number) }
+    ] as TypeSafeMatcher<Demo>
+}

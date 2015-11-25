@@ -1,0 +1,2 @@
+project-template-gradle-groovy-spring-3-hibernate-4-hsqldb-and-logback -> spring-boot-camel
+spring-rest-mongo -> spring-rest-mongodb

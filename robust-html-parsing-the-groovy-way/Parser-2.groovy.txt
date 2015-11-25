@@ -1,0 +1,7 @@
+def slurper = new XmlSlurper()
+slurper.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false)
+def htmlParser = slurper.parse("http://stackoverflow.com/")
+
+htmlParser.'**'.findAll{ it.@class == 'question-hyperlink'}.each {
+    println it
+}

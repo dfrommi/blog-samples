@@ -1,14 +1,17 @@
-# Spock: share common test setup with Traits
-	2015-10-31
-	spock, testing
+---
+posted: 2015-10-31
+tags: [spock, testing]
+---
 
+# Spock: share common test setup with Traits
+	
 Common test data can be shared either by putting it into helper classes or in a common test base class. But there's a third way. *Spock* has full support for `Traits` and this post will explain how to use it.
 
 `Traits` are pretty much like classes, but used like interfaces. Non-private properties and methods are available in the class that implements the `Trait`. And this can be used in *Spock* specifications.
 
 Let's quickly set up a test project, starting with a minimal *gradle* built script that supports *Spock*.
 
-```gradle
+```groovy
 version '1.0'
 
 apply plugin: 'groovy'
@@ -22,7 +25,6 @@ dependencies {
     testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
 }
 ```
-[build.gradle](build.gradle)
 
 And now a `Service` to test
 
@@ -35,7 +37,6 @@ class Service {
     }
 }
 ```
-[Service.groovy](src/main/groovy/mr/f/Service.groovy)
 
 The `greeting` method requires a `User` domain object and creates a greeting String from it
 
@@ -47,7 +48,6 @@ class User {
     String lastname
 }
 ```
-[User.groovy](src/main/groovy/mr/f/User.groovy)
 
 Now that everything is in place, we can test the `greeting` method. 
 
@@ -74,7 +74,6 @@ trait UserSpecTrait {
     }
 }
 ```
-[UserSpecTrait.groovy](src/test/groovy/mr/f/UserSpecTrait.groovy)
 
 There's an important catch. Usually method names `setup` and `cleanup` are expected by *Spock* to perform test preparation and cleanup. But if the `Trait` would use those method names, they could no longer be used in the `Specification` class. That's why they have to have different names in the `Trait`, like in this case `setupUserSpec` and `cleanupUserSpec`. To inform *Spock* about their purpose, they need to be annotated with  *jUnit's* annotations `@Before` and `@After`.
 
@@ -116,7 +115,6 @@ class ServiceSpec extends Specification implements  UserSpecTrait {
     }
 }
 ``` 
-[ServiceSpec.groovy](src/test/groovy/mr/f/ServiceSpec.groovy)
 
 Test method `greeting Arthur` uses the Trait's `user` object. On top of that, the Spec defines its own user test object which is used in `greeting Ford` method.
 
@@ -138,4 +136,4 @@ mr.f.ServiceSpec > greeting Ford STANDARD_OUT
 
 As you can see, the `Trait`'s setup is called first, then the one from `Spec`. And after test execution, first the `Spec` cleanup is done and then the one from `Trait`. That's exactly the sequence I would expect.
 
-I like this way of sharing test setup a lot and will for sure use that quite frequently. You can find the full example project at [GitHub](https://github.com/dfrommi/blog-samples/tree/master/spock-with-traits)
+I like this way of sharing test setup a lot and will for sure use that quite frequently.

@@ -1,0 +1,6 @@
+def slurper = new XmlSlurper()
+def htmlParser = slurper.parse("http://stackoverflow.com/")
+
+htmlParser.'**'.findAll{ it.@class == 'question-hyperlink'}.each {
+    println it
+}
