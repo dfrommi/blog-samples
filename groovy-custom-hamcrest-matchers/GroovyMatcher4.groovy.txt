@@ -1,0 +1,30 @@
+abstract class GroovyMatcher<T> extends TypeSafeMatcher<T> {
+    private Description description = new StringDescription()
+    private Description mismatchDescription = new StringDescription()
+
+    @Override
+    boolean matchesSafely(T item) {
+        match(item, description, mismatchDescription)
+    }
+
+    @Override
+    void describeTo(Description description) {
+        description << this.description
+    }
+
+    @Override
+    void describeMismatchSafely(T item, Description mismatchDescription) {
+        mismatchDescription << this.mismatchDescription
+    }
+
+    abstract boolean match(T item, Description description, Description mismatchDescription)
+}
+
+def hasNumber(int i) {
+    { item, d, md ->
+        int n = item.number
+        d <<  "a Demo object with number " | i
+        md << "was " | n
+        i == n
+    } as GroovyMatcher<Demo>
+}

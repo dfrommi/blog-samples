@@ -2,3 +2,4 @@
 .idea
 *.iml
 build/
+_gh-pages/

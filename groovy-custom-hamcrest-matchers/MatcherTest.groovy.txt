@@ -1,0 +1,6 @@
+class Demo {
+    int number
+}
+
+Demo demo = new Demo(number: 42)
+assertThat demo, hasNumber(41)

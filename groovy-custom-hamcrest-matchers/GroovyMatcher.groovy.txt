@@ -1,0 +1,18 @@
+def hasNumber(int i) {
+    new TypeSafeMatcher<Demo>() {
+        @Override
+        protected boolean matchesSafely(Demo item) {
+            i == item.number
+        }
+
+        @Override
+        void describeTo(Description description) {
+            description.appendText("a Demo object with number ").appendValue(i)
+        }
+
+        @Override
+        protected void describeMismatchSafely(Demo item, Description mismatchDescription) {
+            mismatchDescription.appendText("was ").appendValue(item.number)
+        }
+    }
+}
