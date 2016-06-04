@@ -1,10 +1,10 @@
 #!/usr/bin/env groovyclient
 
 @GrabResolver('https://jitpack.io')
-@Grab('com.github.dfrommi:groovy-pandoc:v0.2.2')
+@Grab('com.github.dfrommi:groovy-pandoc:v0.5')
 
-import static net.frommknecht.pandoc.Pandoc.*
-import net.frommknecht.pandoc.types.*
+import static com.github.dfrommi.pandoc.Pandoc.*
+import com.github.dfrommi.pandoc.types.*
 
 toJSONFilter { def elem, def meta ->
     if(elem in Header && elem.level == 1) {
