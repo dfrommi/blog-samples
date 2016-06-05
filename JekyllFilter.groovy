@@ -1,7 +1,7 @@
-#!/usr/bin/env groovyclient
+#!/usr/bin/env groovy
 
 @GrabResolver('https://jitpack.io')
-@Grab('com.github.dfrommi:groovy-pandoc:v0.5')
+@Grab('com.github.dfrommi:groovy-pandoc:v0.6')
 
 import static com.github.dfrommi.pandoc.Pandoc.*
 import com.github.dfrommi.pandoc.types.*
