@@ -1,6 +1,7 @@
 ---
 posted: 2015-07-30
 tags: [nginx, docker, bugfix]
+comments: 9
 ---
 
 # Enable live updates in Nginx Docker container

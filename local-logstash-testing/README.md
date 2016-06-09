@@ -1,6 +1,7 @@
 ---
 posted: 2016-06-04
 tags: [docker, logstash]
+comments: 12
 ---
 
 # Local Logstash Testing

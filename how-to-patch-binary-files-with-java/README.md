@@ -1,6 +1,7 @@
 ---
 posted: 2010-02-18
 tags: [java, snippet]
+comments: 2
 ---
 
 # How to patch binary files with Java

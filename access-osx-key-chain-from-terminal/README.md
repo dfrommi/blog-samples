@@ -1,6 +1,7 @@
 ---
 posted: 2010-02-25
 tags: [mac, script, security, shell]
+comments: 3
 ---
 
 # Access OSX key chain

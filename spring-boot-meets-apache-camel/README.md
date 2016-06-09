@@ -1,6 +1,7 @@
 ---
 posted: 2014-02-09
 tags: [camel, gradle, spring, spring boot]
+comments: 6
 ---
 
 # Spring Boot meets Apache Camel

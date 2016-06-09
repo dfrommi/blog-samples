@@ -1,6 +1,7 @@
 ---
 posted: 2013-10-05
 tags: [camel, groovy, script, web]
+comments: 5
 ---
 
 # Web-crawling using Apache Camel and jQuery selectors

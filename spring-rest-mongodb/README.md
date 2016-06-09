@@ -1,6 +1,7 @@
 ---
 posted: 2015-06-25
 tags: [spring, spring boot, rest, spring security, mongodb, groovy]
+comments: 7
 ---
 
 # ReST service with Authentication, Spring Data and MongoDB

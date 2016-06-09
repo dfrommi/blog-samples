@@ -1,6 +1,7 @@
 ---
 posted: 2015-07-11
 tags: [spring boot, docker, gradle, spock, testing]
+comments: 8
 ---
 
 # Integration testing of Spring Boot app with Spock and Docker

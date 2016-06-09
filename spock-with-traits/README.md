@@ -1,6 +1,7 @@
 ---
 posted: 2015-10-31
 tags: [spock, testing]
+comments: 11
 ---
 
 # Spock: share common test setup with Traits

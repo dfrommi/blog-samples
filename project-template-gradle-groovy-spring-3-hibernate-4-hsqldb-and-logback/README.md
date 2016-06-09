@@ -1,6 +1,7 @@
 ---
 posted: 2013-08-11
 tags: [gradle, groovy, hibernate, hsqldb, logback, spring]
+comments: 4
 ---
 
 # Project template: Gradle, Groovy, Spring 3, Hibernate 4, HSQLDB and Logback

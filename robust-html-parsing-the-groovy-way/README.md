@@ -1,6 +1,7 @@
 ---
 posted: 2010-02-11
 tags: [groovy, script, web]
+comments: 1
 ---
 
 # Robust HTML parsing the Groovy way

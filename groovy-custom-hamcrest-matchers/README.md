@@ -1,6 +1,7 @@
 ---
 posted: 2015-08-15
 tags: [groovy, hamcrest, testing]
+comments: 10
 ---
 
 # Groovier custom Hamcrest Matchers
