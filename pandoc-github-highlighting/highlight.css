@@ -1,0 +1,88 @@
+
+.highlight pre {
+  padding: 16px;
+  overflow: auto;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.highlight .pl-c {
+  color: #969896;
+}
+.highlight .pl-c1,
+.highlight .pl-s .pl-v {
+  color: #0086b3;
+}
+.highlight .pl-e,
+.highlight .pl-en {
+  color: #795da3;
+}
+.highlight .pl-s .pl-s1,
+.highlight .pl-smi {
+  color: #333;
+}
+.highlight .pl-ent {
+  color: #63a35c;
+}
+.highlight .pl-k {
+  color: #a71d5d;
+}
+.highlight .pl-pds,
+.highlight .pl-s,
+.highlight .pl-s .pl-pse .pl-s1,
+.highlight .pl-sr,
+.highlight .pl-sr .pl-cce,
+.highlight .pl-sr .pl-sra,
+.highlight .pl-sr .pl-sre {
+  color: #183691;
+}
+.highlight .pl-v {
+  color: #ed6a43;
+}
+.highlight .pl-id {
+  color: #b52a1d;
+}
+.highlight .pl-ii {
+  background-color: #b52a1d;
+  color: #f8f8f8;
+}
+.highlight .pl-sr .pl-cce {
+  color: #63a35c;
+  font-weight: bold;
+}
+.highlight .pl-ml {
+  color: #693a17;
+}
+.highlight .pl-mh,
+.highlight .pl-mh .pl-en,
+.highlight .pl-ms {
+  color: #1d3e81;
+  font-weight: bold;
+}
+.highlight .pl-mq {
+  color: #008080;
+}
+.highlight .pl-mi {
+  color: #333;
+  font-style: italic;
+}
+.highlight .pl-mb {
+  color: #333;
+  font-weight: bold;
+}
+.highlight .pl-md {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+.highlight .pl-mi1 {
+  background-color: #eaffea;
+  color: #55a532;
+}
+.highlight .pl-mdr {
+  color: #795da3;
+  font-weight: bold;
+}
+.highlight .pl-mo {
+  color: #1d3e81;
+}
