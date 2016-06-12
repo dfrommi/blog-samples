@@ -6,7 +6,7 @@ comments: 13
 
 # Pandoc with Github Syntax Highlighting
 
-*Pandoc* - the swiss army knife of document conversion - supports syntax highlighting out of the box. However, I prefer Github's way of syntax highlighting, and even that can be included in *Pandoc*. Swiss army knifes are awesome.
+*Pandoc* - the swiss army knife of document conversion - supports syntax highlighting out of the box. But I prefer Github's way of syntax highlighting, and even that can be included in *Pandoc*.
 
 We use a filter to replace code blocks by corresponding html code with highlighting. Github offers an [API](https://developer.github.com/v3/markdown/) to render markdown as html - including syntax highlighting - and we'll use it to get the html from raw code.
 
