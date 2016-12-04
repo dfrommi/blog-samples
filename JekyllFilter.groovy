@@ -48,5 +48,5 @@ def highlight(CodeBlock cb) {
   String language = cb.attr.classes ? cb.attr.classes.first() : ''
   String content = "```${language}\n${cb.code}\n```"
   def resp = client.post(path: "/markdown", requestContentType: ContentType.JSON, body: [text: content])
-  return new RawBlock(format: "html", content: resp.data.text)
+  return new RawBlock(format: "html", content: "{% raw %}\n${resp.data.text}\n{% endraw %}")
 }
