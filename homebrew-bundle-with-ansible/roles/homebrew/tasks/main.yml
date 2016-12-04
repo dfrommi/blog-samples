@@ -1,0 +1,12 @@
+- name: Enable Homebrew bundle tap
+  homebrew_tap:
+    name: homebrew/bundle
+
+- name: Check if Brewfile contains updates
+  shell: brew bundle check --file="{{brewfile|default(Brewfile)}}"
+  register: bundle_check_result
+  ignore_errors: true
+
+- name: Install apps using Brewfile
+  shell: brew bundle install --file="{{brewfile|default(Brewfile)}}"
+  when: bundle_check_result|failed
